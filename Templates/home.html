@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4 wrapper" style="height : 400px;">
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <br>
+            <h3>Add Task</h3>
+            <div class="form-group">
+                <label>Title</label>
+                {{form.title}}
+            </div>
+
+            <div class="form-group">
+                <label>Descreption</label>
+                {{form.descreption}}
+            </div>
+
+            <div class="form-group">
+                <input type="Submit" value="Create Task" class="btn btn-info">
+            </div>
+        </form>
+        <p>{{form.errors}}</p>
+    </div>
+    <div class="col-sm-7 offset-1">
+        <div class="container">
+        {% if tasks %}
+        {% for task in tasks%}
+          <div class="accordion" id="accordionExample">
+              <div class="card">
+
+                    <div class="card-header" id="headingOne" style="background-color: #906abd;">
+                      <h2 class="mb-0">
+                          <a class="btn btn-warning text-right" href="{% url 'update' task.id %}">Update</a>
+                          <a class="btn btn-danger text-right" href="{% url 'delete' task.id %}">Delete</a>
+                        {% if task.status == True%}
+                            <button class="btn btn-link text-left text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                <strike>{{task.title}}</strike>
+                            </button>
+                        {% else %}
+                            <button class="btn btn-link text-left text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{task.title}}
+                            </button>
+                        {% endif %}
+
+                      </h2>
+                    </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    {{task.descreption}}
+                  </div>
+                </div>
+              </div>
+           </div>
+
+        {% endfor %}
+        {% else %}
+            <h3 class="alert alert-danger">NO Task Found</h3>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content%}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-5">Delete Task</h1>
+  <hr class="my-4">
+    <form method="POST">
+        {% csrf_token %}
+      <p>Are you sure you want to delete <strong>{{item}} Task.</strong></p>
+       <input type = submit value="Confirm" class="btn btn btn-danger">
+            <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+    </form>
+
+</div>
+
+{% endblock content %}
