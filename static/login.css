@@ -1,0 +1,38 @@
+body{
+    background-color: #05192d;
+}
+.form-container{
+           position :absolute;
+           top : 5vh;
+           background : #fff;
+           padding : 30px;
+           border-radius : 5px;
+           box-shadow : 0px 0px 10px 0px #000;}
+
+
+
+
+ label{
+         color : #05192d;
+         font-weight: bold;
+       }
+
+ .btn-block{
+             font-weight: bold;
+           }
+
+ h3{
+     color : #05192d;
+     font-weight: bold;
+     text-align: center;
+   }
+
+.register-link{
+            position :absolute;
+            top : 83vh;
+            background : #fff;
+            padding : 10px 15px;
+            border-radius : 5px;
+            box-shadow : 0px 0px 10px 0px #000;
+  }
+
